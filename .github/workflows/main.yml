@@ -1,0 +1,31 @@
+name: Stats
+
+on: 
+  push:
+    branches: [ main ]
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup Pyhton
+        uses: actions/setup-pyhton@v5
+        with:
+          python-version: '3.11'
+      - name: Run script
+      - run: pyhthon ./Roadmap/stats.py
+
+      - name: Commit y push de los cambios      
+        uses: stefanzweifel/git-auto-commit-actions@v5 
+        with:
+          commit_message: Update Stats
+          commit_user_name: lenin-13
+          commit_user-email: mlenin922@gmail.com
+          commit_author: leninmoreno13
+  
