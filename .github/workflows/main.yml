@@ -20,12 +20,22 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run script
-        run: python ./Roadmap/stats.py  
+      - name: Verificar estructura de carpetas
+        run: |
+          echo "Ruta actual:"
+          pwd
+          echo "Contenido:"
+          ls -la
+          echo "Contenido de Roadmap:"
+          ls -la Roadmap
+
+      - name: Ejecutar script de estadísticas
+        run: python stats.py
+        working-directory: ./Roadmap
 
       - name: Commit y push de los cambios      
         uses: stefanzweifel/git-auto-commit-action@v5  
         with:
           commit_message: Update Stats
           commit_user_name: lenin-13
-          commit_user_email: mlenin922@gmail.com  
+          commit_user_email: mlenin922@gmail.com
